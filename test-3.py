@@ -6,16 +6,16 @@ values = []
 def seat_person(lv, si):
 
     if len(taken) == 0:
-        value = 0
+        val = 0
     elif len(taken) == 1:
-        value = 1
+        val = 1
     else:
         left = si - 1
         right = si
-        lval = values[left] if (left >= 0 and left < len(values)) else 0
-        rval = values[right] if (right < len(values)) else 0
-        value = max(lval, rval) + 1
-    values.insert(si, value)
+        l_val = values[left] if (0 <= left < len(values)) else 0
+        r_val = values[right] if (right < len(values)) else 0
+        val = max(l_val, r_val) + 1
+    values.insert(si, val)
     taken.insert(si, lv)
 
 
@@ -31,6 +31,6 @@ print(f"taken: {taken} \nvalues: {values}")
 result = []
 for i, location in enumerate(values):
     for j, value in enumerate(values):
-        if (value == i):
+        if value == i:
             result.append(taken[j])
 print(''.join(result))
